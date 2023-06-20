@@ -15,8 +15,8 @@ public class User {
     @Getter @Setter @Column(name = "name")
     private String name;
 
-    @Getter @Setter @Column(name = "lastName")
-    private String lastName;
+    @Getter @Setter @Column(name = "last_name")
+    private String last_name;
 
     @Getter @Setter @Column(name = "email")
     private String email;

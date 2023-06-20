@@ -1,20 +1,23 @@
 package com.bellakos.iTrackEdu.controller;
 
+import com.bellakos.iTrackEdu.dao.UserDAO;
 import com.bellakos.iTrackEdu.models.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class UserController {
 
-    @RequestMapping(value = "user")
-    public User getUser() {
-        User user = new User();
-        user.setId(1L);
-        user.setName("Juan");
-        user.setLastName("Perez");
-        user.setEmail("juanperez@gmail.com");
-        user.setPassword("123456");
-        return user;
+    @Autowired
+    private UserDAO userDAO;
+
+    @RequestMapping(value = "users")
+    public List<User> getUsers() {
+       return userDAO.getUsers();
     }
+
 }
