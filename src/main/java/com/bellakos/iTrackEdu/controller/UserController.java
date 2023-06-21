@@ -3,10 +3,7 @@ package com.bellakos.iTrackEdu.controller;
 import com.bellakos.iTrackEdu.dao.UserDAO;
 import com.bellakos.iTrackEdu.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +16,11 @@ public class UserController {
     @RequestMapping(value = "api/users")
     public List<User> getUsers() {
         return userDAO.getUsers();
+    }
+
+    @RequestMapping(value = "api/users", method = RequestMethod.POST)
+    public void registerUser(@RequestBody User user) {
+        userDAO.registerUser();
     }
 
     @RequestMapping(value = "api/users/{id}", method = RequestMethod.DELETE)

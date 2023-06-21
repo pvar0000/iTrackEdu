@@ -27,4 +27,11 @@ public class UserDAOImp implements UserDAO{
         User user = entityManager.find(User.class, id);
         entityManager.remove(user);
     }
+
+    @Override
+    public void registerUser(User user) {
+        entityManager.merge(user);
+    }
+
+
 }
