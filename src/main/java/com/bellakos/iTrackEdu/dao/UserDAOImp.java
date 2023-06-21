@@ -21,4 +21,10 @@ public class UserDAOImp implements UserDAO{
         @SuppressWarnings("unchecked") List<User> resultList = entityManager.createQuery(query).getResultList();
         return resultList;
     }
+
+    @Override
+    public void deleteUser(Long id) {
+        User user = entityManager.find(User.class, id);
+        entityManager.remove(user);
+    }
 }
