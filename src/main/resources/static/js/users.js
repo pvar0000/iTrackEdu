@@ -1,10 +1,11 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
-  $('#users').DataTable();
+  loadUsers();
+  $("#users").DataTable();
 });
 
 async function loadUsers() {
-    const request = await fetch("user/1564", {
+    const request = await fetch("api/users", {
         method: "GET",
         headers: {
         Accept: "application/json",
@@ -14,11 +15,12 @@ async function loadUsers() {
 
      const users = await request.json();
 
-     let listHtml = '';
+     let listUsersHtml = '';
      for (let user of users) {
-        let userHtml = '<tr><td>' + users.id + '</td><td>' + users.name + ' ' + users.last_name + '</td><td>' + users.email + '</td><td>' + users.password + '</td><td>' +  buttonDelete + '</td></tr>';
-        listHtml += userHtml;
+        let buttonDelete = '<a href="#" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>';
+        let userHtml = '<tr><td>' + user.id + '</td><td>' + user.name + ' ' + user.last_name + '</td><td>' + user.email + '</td><td>' + user.password + '</td><td>' +  buttonDelete + '</td></tr>';
+        listUsersHtml += userHtml;
      }
-     let buttonDelete = '<a href="#" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>';
 
-    document.querySelector('#users tbody').outerHTML = userHtml;
+    document.querySelector('#users tbody').outerHTML = listUsersHtml;
+}
