@@ -8,7 +8,7 @@ import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.List;  
 
 @Repository
 @Transactional
@@ -36,20 +36,21 @@ public class UserDAOImp implements UserDAO{
     }
 
     @Override
-    public boolean authenticate(User user) {
+    public User getUserByCredentials(User user) {
         String query = "FROM User WHERE email = :email";
         @SuppressWarnings("unchecked") List<User> resultList = entityManager.createQuery(query)
                 .setParameter("email", user.getEmail())
                 .getResultList();
 
-        if (resultList.isEmpty()) return false;
+        if (resultList.isEmpty()) return null;
 
         String password = resultList.get(0).getPassword();
 
         Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
 
-        return argon2.verify(password, user.getPassword().toCharArray()); // Convert to char[] user.getPassword() before hashing
-    }
+        if (argon2.verify(password, user.getPassword().toCharArray())) return resultList.get(0);
 
+        return null;
+    }
 
 }
