@@ -2,6 +2,7 @@ package com.bellakos.iTrackEdu.controller;
 
 import com.bellakos.iTrackEdu.dao.UserDAO;
 import com.bellakos.iTrackEdu.models.User;
+import com.bellakos.iTrackEdu.utils.JWTUtil;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,12 @@ public class UserController {
     @Autowired
     private UserDAO userDAO;
 
+    @Autowired
+    private JWTUtil jwtUtil;
+
     @RequestMapping(value = "api/users")
-    public List<User> getUsers() {
+    public List<User> getUsers(@RequestHeader(value="Authorization") String token) {
+        if (validateToken(token)) return null;
         return userDAO.getUsers();
     }
 
@@ -31,7 +36,13 @@ public class UserController {
     }
 
     @RequestMapping(value = "api/users/{id}", method = RequestMethod.DELETE)
-    public void deleteUser(@PathVariable Long id) {
+    public void deleteUser(@RequestHeader(value="Authorization") String token, @PathVariable Long id) {
+        if (validateToken(token)) return;
         userDAO.deleteUser(id);
+    }
+
+    private boolean validateToken(String token) {
+        String userId = jwtUtil.getKey(token);
+        return userId == null;
     }
 }

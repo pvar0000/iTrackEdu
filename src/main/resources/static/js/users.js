@@ -7,10 +7,7 @@ $(document).ready(function () {
 async function loadUsers() {
   const request = await fetch("api/users", {
     method: "GET",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
+    headers: getHeaders()
   });
 
   const users = await request.json();
@@ -41,15 +38,20 @@ async function loadUsers() {
   document.querySelector("#users tbody").outerHTML = listUsersHtml;
 }
 
+function getHeaders() {
+    return {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: localStorage.token,
+    };
+}
+
 async function deleteUser(id) {
   if (!confirm("Are you sure you want to delete it?")) return;
 
   const request = await fetch("api/users/" + id, {
     method: "DELETE",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
+    headers: getHeaders()
   });
 
   location.reload();
