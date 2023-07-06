@@ -7,7 +7,7 @@ $(document).ready(function () {
 async function loadUsers() {
   const request = await fetch("api/users", {
     method: "GET",
-    headers: getHeaders()
+    headers: getHeaders(),
   });
 
   const users = await request.json();
@@ -39,11 +39,11 @@ async function loadUsers() {
 }
 
 function getHeaders() {
-    return {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: localStorage.token,
-    };
+  return {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+    Authorization: localStorage.token,
+  };
 }
 
 async function deleteUser(id) {
@@ -51,7 +51,7 @@ async function deleteUser(id) {
 
   const request = await fetch("api/users/" + id, {
     method: "DELETE",
-    headers: getHeaders()
+    headers: getHeaders(),
   });
 
   location.reload();
