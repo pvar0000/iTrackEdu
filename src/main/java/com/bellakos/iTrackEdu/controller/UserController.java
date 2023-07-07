@@ -1,5 +1,6 @@
 package com.bellakos.iTrackEdu.controller;
 
+import com.bellakos.iTrackEdu.dao.GradeDAO;
 import com.bellakos.iTrackEdu.dao.UserDAO;
 import com.bellakos.iTrackEdu.models.User;
 import com.bellakos.iTrackEdu.utils.JWTUtil;
@@ -15,10 +16,14 @@ public class UserController {
 
     @Autowired
     private UserDAO userDAO;
+    
+    @Autowired
+    private GradeDAO gradeDAO;
 
     @Autowired
     private JWTUtil jwtUtil;
-
+    
+    
     @RequestMapping(value = "api/users")
     public List<User> getUsers(@RequestHeader(value="Authorization") String token) {
         if (validateToken(token)) return null;
