@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/singIn.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@00&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" /> -->
+
+    <title>Sing In</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"
+      integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <section>
+      <!-- <div id="titulo">
+				<h2>TrackEdu</h2>
+			</div> -->
+
+      <div id="botones">
+        <div class="cardContainer">
+          <div class="card animate__animated" id="logIn">
+            <div
+              class="bkgImg"
+              style="
+                background-image: url('img/ImgLogIn.jpeg');
+                width: 455px;
+                height: 255px;
+                background-size: cover;
+                left: -1px;
+                position: relative;
+                top: -10px;
+                border-radius: 5px;
+                background-repeat: no-repeat;
+              "
+            ></div>
+            <div class="card-body cardBody">
+              <h1 class="card-title">Log In</h1>
+              <p>Welcome Back!</p>
+
+              <form class="user">
+                <h6>Email</h6>
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control form-control-user"
+                    id="txtEmail"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter Email Address..."
+                  />
+                </div>
+
+                <h6>Password</h6>
+                <div class="form-group">
+                  <input
+                    type="password"
+                    class="form-control form-control-user"
+                    id="txtPassword"
+                    placeholder="Password"
+                  />
+                </div>
+                <div class="btnsContainer">
+                  <a
+                    onclick="login()"
+                    href="#"
+                    class="btn btn-primary btn-user btn-block"
+                    >Log In</a
+                  >
+                  <a href="#" class="btn-outline btn">Cancel</a>
+                </div>
+              </form>
+              <hr />
+              <div class="text-center">
+                <a class="small" href="register.html">Create an Account!</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+    <script src="js/login.js"></script>
+  </body>
+</html>
